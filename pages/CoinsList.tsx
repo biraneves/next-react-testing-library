@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 const CoinsList = () => {
     const [data, setData] = useState([]);
-    const [filteredData, setFilteredData] = useState([]);
-    const [filterText, setFilterText] = useState('');
+    // const [filteredData, setFilteredData] = useState([]);
+    // const [filterText, setFilterText] = useState('');
 
     useEffect(() => {
         fetch(
@@ -13,17 +13,17 @@ const CoinsList = () => {
             .then(setData);
     }, []);
 
-    useEffect(() => {
-        if (data) {
-            setFilteredData(
-                data.filter((item: any) =>
-                    item.id.toLowerCase().includes(filterText.toLowerCase()),
-                ),
-            );
-        } else {
-            setFilteredData([]);
-        }
-    }, [data, filteredData]);
+    // useEffect(() => {
+    //     if (data) {
+    //         setFilteredData(
+    //             data.filter((item: any) =>
+    //                 item.id.toLowerCase().includes(filterText.toLowerCase()),
+    //             ),
+    //         );
+    //     } else {
+    //         setFilteredData([]);
+    //     }
+    // }, [data, filteredData]);
 
     return (
         <div>
@@ -38,7 +38,7 @@ const CoinsList = () => {
                     />
                 </label>
             </div>
-            {filteredData.map((item: any) => (
+            {data.map((item: any) => (
                 <div key={item.id}>{item.id}</div>
             ))}
         </div>
